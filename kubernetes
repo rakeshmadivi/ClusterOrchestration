@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Installing Kubernetes on Linux(debian stretch)
+
+# Install snap
+sudo apt-get install snapd
+
+# Install microk8s 
+sudo snap install microk8s --classic
+
+# If you get any error something like following... Try to install 'core' snap and re-install microk8s
+#####################################
+error: cannot perform the following tasks:
+- Run configure hook of "microk8s" snap if present (run hook "configure":
+-----
++ '[' '!' -d /var/snap/microk8s/383/certs ']'
++ grep -e '\-\-client-ca-file=${SNAP}/certs/ca.crt' /var/snap/microk8s/383/args/kube-apiserver
+grep: /var/snap/microk8s/383/args/kube-apiserver: No such file or directory
++ grep requestheader-client-ca-file /var/snap/microk8s/383/args/kube-apiserver
+grep: /var/snap/microk8s/383/args/kube-apiserver: No such file or directory
++ echo 'Patching requestheader-client-ca-file argument'
+Patching requestheader-client-ca-file argument
++ echo ''
+/snap/microk8s/383/meta/hooks/configure: line 29: /var/snap/microk8s/383/args/kube-apiserver: No such file or directory
+-----)
+#####################################
+
+# Install 'core' snap
+sudo snap install core
+sudo snap install microk8s --classic
+
