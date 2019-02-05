@@ -29,3 +29,12 @@ Patching requestheader-client-ca-file argument
 sudo snap install core
 sudo snap install microk8s --classic
 
+# Check installed snaps
+sudo snap list
+
+# Check the snap services
+sudo snap services
+
+# To disable the services on boot up
+sudo snap --disable <service_name>
+
